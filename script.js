@@ -1,58 +1,20 @@
 
+ 
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// ============ INTERSECTION OBSERVER FOR ANIMATION ============
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('entrance-animation');
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-// Observe all sections for entrance animation
-document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
-});
-
-// ============ STICKY HEADER & SCROLL EFFECTS ============
+// 1. Sticky Header & Scroll Effects
 const header = document.getElementById('header');
-let lastScrollY = 0;
-
 window.addEventListener('scroll', () => {
-    const currentScroll = window.scrollY;
-    
-    // Sticky header with blur effect
-    if (currentScroll > 50) {
+    if (window.scrollY > 50) {
         header.classList.add('bg-slate-900/90', 'backdrop-blur-md', 'shadow-lg', 'py-4');
         header.classList.remove('bg-transparent', 'py-6');
     } else {
         header.classList.add('bg-transparent', 'py-6');
         header.classList.remove('bg-slate-900/90', 'backdrop-blur-md', 'shadow-lg', 'py-4');
     }
-    
-    // Hide header on scroll down, show on scroll up
-    if (currentScroll > lastScrollY && currentScroll > 100) {
-        header.style.transform = 'translateY(-100%)';
-    } else {
-        header.style.transform = 'translateY(0)';
-    }
-    lastScrollY = currentScroll;
-    
-    // Parallax effect on hero decorative elements
-    const parallaxElements = document.querySelectorAll('[class*="animate-float"]');
-    parallaxElements.forEach((el, index) => {
-        el.style.transform = `translateY(${currentScroll * 0.5 + index * 20}px)`;
-    });
 });
 
-// ============ MOBILE MENU TOGGLE ============
+// 2. Mobile Menu Toggle
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 const menuIcon = document.getElementById('menu-icon');
@@ -62,53 +24,33 @@ mobileMenuBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
     menuIcon.classList.toggle('hidden');
     closeIcon.classList.toggle('hidden');
-    
-    // Add animation
-    if (!mobileMenu.classList.contains('hidden')) {
-        mobileMenu.style.animation = 'slideDown 0.3s ease-out';
-    }
 });
 
-// Close menu when a link is clicked
-document.querySelectorAll('.mobile-nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        menuIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
-    });
-});
-
-// ============ SCROLL SPY (Highlight active section) ============
+// 3. Scroll Spy (Highlight active section)
 const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-link:not(.logo-link)');
+const navLinks = document.querySelectorAll('.nav-link');
 
-const updateActiveNav = () => {
+window.addEventListener('scroll', () => {
     let current = '';
-    
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= sectionTop - 200) {
+        if (scrollY >= (sectionTop - 200)) {
             current = section.getAttribute('id');
         }
     });
 
     navLinks.forEach(link => {
-        link.classList.remove('text-cyan-400', 'active');
+        link.classList.remove('text-cyan-400');
         link.classList.add('text-slate-300');
-        
         if (link.getAttribute('href') === `#${current}`) {
             link.classList.remove('text-slate-300');
-            link.classList.add('text-cyan-400', 'active');
+            link.classList.add('text-cyan-400');
         }
     });
-};
+});
 
-window.addEventListener('scroll', updateActiveNav);
-
-// ============ SMOOTH SCROLL WITH CUSTOM ANIMATION ============
+// 4. Smooth Scroll implementation
 const allNavLinks = document.querySelectorAll('a[href^="#"]');
-
 allNavLinks.forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const targetId = this.getAttribute('href');
@@ -118,8 +60,7 @@ allNavLinks.forEach(anchor => {
         if (targetElement) {
             e.preventDefault();
             
-            // Close mobile menu if open
-            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+            if (!mobileMenu.classList.contains('hidden')) {
                 mobileMenu.classList.add('hidden');
                 menuIcon.classList.remove('hidden');
                 closeIcon.classList.add('hidden');
@@ -133,137 +74,112 @@ allNavLinks.forEach(anchor => {
                 top: offsetPosition,
                 behavior: "smooth"
             });
-            
-            // Add visual feedback
-            targetElement.style.animation = 'pulse 0.5s ease-out';
         }
     });
 });
 
-// ============ MOUSE PARALLAX ON HERO SECTION ============
-const heroSection = document.querySelector('#home');
+// --- NEW INTERACTIVE SCRIPTS ---
 
-if (heroSection) {
-    document.addEventListener('mousemove', (e) => {
-        if (window.scrollY < heroSection.offsetHeight) {
-            const floatingElements = heroSection.querySelectorAll('[class*="animate-float"]');
-            const mouseX = (e.clientX / window.innerWidth - 0.5) * 30;
-            const mouseY = (e.clientY / window.innerHeight - 0.5) * 30;
-            
-            floatingElements.forEach((el, index) => {
-                el.style.transform = `translate(${mouseX * (index + 1) * 0.1}px, ${mouseY * (index + 1) * 0.1}px)`;
-            });
-        }
-    });
+// 5. Typing Effect for Hero Section
+const phrases = ["I build things for the web.", "I craft digital experiences.", "I write elegant code."];
+let currentPhraseIndex = 0;
+let isDeleting = false;
+let charIndex = 0;
+const typedTextSpan = document.getElementById("typed-text");
+
+function typeEffect() {
+    const currentPhrase = phrases[currentPhraseIndex];
+    
+    if (isDeleting) {
+        typedTextSpan.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        typedTextSpan.textContent = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
+    }
+
+    let typeSpeed = isDeleting ? 40 : 80;
+
+    // Pause at the end of typing
+    if (!isDeleting && charIndex === currentPhrase.length) {
+        typeSpeed = 2000;
+        isDeleting = true;
+    } 
+    // Pause before typing next phrase
+    else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+        typeSpeed = 500;
+    }
+
+    setTimeout(typeEffect, typeSpeed);
 }
 
-// ============ INTERACTIVE CARD HOVER EFFECTS ============
-document.querySelectorAll('[class*="group"]').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        // Add glow effect on hover
-        if (this.classList.contains('group-hover')) {
-            this.style.boxShadow = '0 0 30px rgba(6, 182, 212, 0.3)';
-        }
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.boxShadow = '';
-    });
-});
+// Start typing effect slightly after load
+setTimeout(typeEffect, 1000);
 
-// ============ SCROLL PROGRESS INDICATOR ============
-const createScrollProgress = () => {
-    const progressBar = document.createElement('div');
-    progressBar.className = 'fixed top-0 left-0 h-1 bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 z-50';
-    progressBar.style.width = '0%';
-    document.body.appendChild(progressBar);
-    
-    window.addEventListener('scroll', () => {
-        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrolled = (window.scrollY / scrollHeight) * 100;
-        progressBar.style.width = scrolled + '%';
-    });
+
+// 6. Intersection Observer for Scroll Reveals
+const revealOptions = {
+    threshold: 0.15,
+    rootMargin: "0px 0px -50px 0px"
 };
 
-createScrollProgress();
-
-// ============ TYPING EFFECT FOR HERO TEXT ============
-const typeWriter = (element, text, speed = 50) => {
-    if (!element) return;
-    element.textContent = '';
-    let index = 0;
-    
-    const type = () => {
-        if (index < text.length) {
-            element.textContent += text.charAt(index);
-            index++;
-            setTimeout(type, speed);
+const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            // Stop observing once revealed
+            observer.unobserve(entry.target);
         }
-    };
-    
-    type();
-};
+    });
+}, revealOptions);
 
-// Initialize typing effect when page loads
-window.addEventListener('load', () => {
-    // Add entrance animations to key elements
-    document.querySelectorAll('h1, h2, p').forEach((el, index) => {
-        el.style.opacity = '1';
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+
+// 7. 3D Tilt Effect on Project Cards / Profile Image
+const tiltCards = document.querySelectorAll('.tilt-card');
+
+tiltCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left; // x position within the element
+        const y = e.clientY - rect.top;  // y position within the element
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = ((y - centerY) / centerY) * -10; // Max rotation 10deg
+        const rotateY = ((x - centerX) / centerX) * 10;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        // Reset card position smoothly
+        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
     });
 });
 
-// ============ BUTTON RIPPLE EFFECT ============
-document.querySelectorAll('a, button').forEach(button => {
-    button.addEventListener('click', function(e) {
-        const ripple = document.createElement('span');
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-        
-        ripple.style.cssText = `
-            position: absolute;
-            width: ${size}px;
-            height: ${size}px;
-            background: rgba(255,255,255,0.5);
-            border-radius: 50%;
-            left: ${x}px;
-            top: ${y}px;
-            pointer-events: none;
-            animation: ripple-animation 600ms ease-out;
-        `;
-        
-        if (this.style.position !== 'absolute' && this.style.position !== 'fixed') {
-            this.style.position = 'relative';
-            this.style.overflow = 'hidden';
-        }
-        
-        this.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 600);
-    });
-});
-
-// CSS animation for ripple effect
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes ripple-animation {
-        to {
-            transform: scale(4);
-            opacity: 0;
-        }
-    }
-    @keyframes slideDown {
-        from {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-`;
-document.head.appendChild(style);
-
-// ============ SMOOTH HEADER TRANSITION ============
-header.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+// 8. Copy to Clipboard Toast Notification
+function copyEmail() {
+    const email = "tramuthu@gmail.com";
+    
+    // Modern copy to clipboard using execCommand for better iFrame support
+    const tempInput = document.createElement("input");
+    tempInput.value = email;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    
+    // Show toast
+    const toast = document.getElementById("toast");
+    toast.classList.add("show");
+    
+    // Hide toast after 3 seconds
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3000);
+}

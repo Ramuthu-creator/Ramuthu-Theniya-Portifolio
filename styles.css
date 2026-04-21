@@ -1,43 +1,4 @@
 
-/* Animations from Tailwind in index.html */
-@keyframes gradientFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-}
-
-@keyframes glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(6,182,212,0.3); }
-    50% { box-shadow: 0 0 40px rgba(6,182,212,0.6); }
-}
-
-@keyframes slideInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes typeWriter {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes pulse-scale {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
-
-body {
-    background: linear-gradient(-45deg, #0f172a, #0a0e27, #1a1f3a, #0f172a);
-    background-size: 400% 400%;
-    animation: gradientFlow 15s ease infinite;
-}
-
-/* Custom scrollbar for a sleeker look */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -51,166 +12,57 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #06b6d4; 
 }
-
 /* Active Nav Link Style */
 .nav-link.active {
-    color: #22d3ee; /* cyan-400 */
+    color: #22d3ee;
 }
 
-/* Smooth scrolling */
-html {
-    scroll-behavior: smooth;
+/* --- NEW INTERACTIVE STYLES --- */
+
+/* Typing Cursor */
+.typing-cursor::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+    color: #22d3ee;
+}
+@keyframes blink { 
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; } 
 }
 
-/* Enhanced animations */
-@keyframes float-slow {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-30px) rotate(5deg); }
+/* Scroll Reveal Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
 }
-
-@keyframes shimmer {
-    0% { background-position: -1000px 0; }
-    100% { background-position: 1000px 0; }
-}
-
-@keyframes glow-pulse {
-    0%, 100% { 
-        box-shadow: 0 0 5px rgba(6, 182, 212, 0.5),
-                    0 0 15px rgba(6, 182, 212, 0.3);
-    }
-    50% { 
-        box-shadow: 0 0 10px rgba(6, 182, 212, 0.8),
-                    0 0 25px rgba(6, 182, 212, 0.5);
-    }
-}
-
-@keyframes entrance {
-    from {
-        opacity: 0;
-        transform: translateY(20px) scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@keyframes hover-lift {
-    0% { transform: translateY(0px); }
-    100% { transform: translateY(-8px); }
-}
-
-@keyframes text-glow {
-    0%, 100% { text-shadow: 0 0 10px rgba(6, 182, 212, 0.5); }
-    50% { text-shadow: 0 0 20px rgba(6, 182, 212, 0.8); }
-}
-
-/* Utility animation classes */
-.float-animation {
-    animation: float-slow 4s ease-in-out infinite;
-}
-
-.glow-animation {
-    animation: glow-pulse 2s ease-in-out infinite;
-}
-
-.entrance-animation {
-    animation: entrance 0.8s ease-out;
-}
-
-.text-glow-animation {
-    animation: text-glow 2s ease-in-out infinite;
-}
-
-/* Link hover effects */
-a {
-    position: relative;
-}
-
-a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #06b6d4;
-    transition: width 0.3s ease;
-}
-
-.nav-link::after {
-    display: none;
-}
-
-/* Enhanced button effects */
-button, [role="button"] {
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Smooth transitions */
-* {
-    transition-property: background-color, border-color, color, fill, stroke;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
-}
-
-/* Interactive section reveal animation */
-section {
+.reveal.active {
     opacity: 1;
-    animation: entrance 0.6s ease-out backwards;
+    transform: translateY(0);
 }
 
-section:nth-child(1) { animation-delay: 0s; }
-section:nth-child(2) { animation-delay: 0.1s; }
-section:nth-child(3) { animation-delay: 0.2s; }
-section:nth-child(4) { animation-delay: 0.3s; }
-section:nth-child(5) { animation-delay: 0.4s; }
-
-/* Code block styling */
-code {
-    background: rgba(6, 182, 212, 0.1);
-    padding: 2px 6px;
-    border-radius: 4px;
-    color: #fbbf24;
-    font-family: 'Courier New', monospace;
+/* 3D Tilt Card Base */
+.tilt-card {
+    transition: transform 0.1s ease;
+    transform-style: preserve-3d;
+    will-change: transform;
 }
 
-/* Backdrop blur support */
-@supports (backdrop-filter: blur(10px)) {
-    .backdrop-blur {
-        backdrop-filter: blur(10px);
-    }
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #06b6d4;
+    color: #0f172a;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 100;
+    box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.4);
 }
-
-/* Custom focus states for accessibility */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible {
-    outline: 2px solid #06b6d4;
-    outline-offset: 2px;
-}
-
-/* Parallax effect preparation */
-.parallax-section {
-    position: relative;
-    overflow: hidden;
-}
-
-/* Gradient text effects */
-.gradient-text {
-    background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 50%, #06b6d4 100%);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* Card elevation effect */
-.card-hover {
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.card-hover:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+.toast.show { 
+    bottom: 30px; 
 }
