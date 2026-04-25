@@ -6,11 +6,11 @@ document.getElementById('year').textContent = new Date().getFullYear();
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
-        header.classList.add('bg-slate-900/90', 'backdrop-blur-md', 'shadow-lg', 'py-4');
-        header.classList.remove('bg-transparent', 'py-6');
+        header.classList.add('py-2');
+        header.classList.remove('py-6');
     } else {
-        header.classList.add('bg-transparent', 'py-6');
-        header.classList.remove('bg-slate-900/90', 'backdrop-blur-md', 'shadow-lg', 'py-4');
+        header.classList.add('py-6');
+        header.classList.remove('py-2');
     }
 });
 
@@ -40,11 +40,11 @@ window.addEventListener('scroll', () => {
     });
 
     navLinks.forEach(link => {
-        link.classList.remove('text-cyan-400');
+        link.classList.remove('text-brand-400');
         link.classList.add('text-slate-300');
         if (link.getAttribute('href') === `#${current}`) {
             link.classList.remove('text-slate-300');
-            link.classList.add('text-cyan-400');
+            link.classList.add('text-brand-400');
         }
     });
 });
@@ -150,10 +150,10 @@ tiltCards.forEach(card => {
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         
-        const rotateX = ((y - centerY) / centerY) * -10; // Max rotation 10deg
-        const rotateY = ((x - centerX) / centerX) * 10;
+        const rotateX = ((y - centerY) / centerY) * -5; // Max rotation 5deg
+        const rotateY = ((x - centerX) / centerX) * 5;
         
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
     });
     
     card.addEventListener('mouseleave', () => {

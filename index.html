@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ramuthu theniya | Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800;900&display=swap"
+        rel="stylesheet">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -11,8 +18,32 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Outfit', 'system-ui', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+                    },
+                    colors: {
+                        dark: {
+                            900: '#0a0a0a',
+                            800: '#121212',
+                            700: '#1a1a1a',
+                        },
+                        brand: {
+                            400: '#38bdf8', // Light blue
+                            500: '#0ea5e9', // Blue
+                            600: '#0284c7', // Darker blue
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
                     }
                 }
             }
@@ -20,75 +51,141 @@
     </script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-slate-900 text-slate-50 font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
+
+<body class="bg-dark-900 text-slate-50 font-sans selection:bg-brand-500/30 selection:text-brand-200 relative">
+
+    <!-- Premium Background Effects -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div
+            class="absolute top-0 left-1/4 w-96 h-96 bg-brand-500/10 rounded-full mix-blend-screen filter blur-[100px] opacity-70 animate-blob">
+        </div>
+        <div
+            class="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full mix-blend-screen filter blur-[100px] opacity-70 animate-blob animation-delay-2000">
+        </div>
+        <div
+            class="absolute -bottom-32 left-1/3 w-96 h-96 bg-blue-500/10 rounded-full mix-blend-screen filter blur-[100px] opacity-70 animate-blob animation-delay-4000">
+        </div>
+        <div
+            class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+')] opacity-20">
+        </div>
+    </div>
 
     <!-- Toast Notification Container -->
     <div id="toast" class="toast">Email copied to clipboard!</div>
 
     <!-- NAVBAR -->
-    <header id="header" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-6">
-        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-bold tracking-tighter text-cyan-400 logo-link">
+    <header id="header"
+        class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-6 border-b border-transparent">
+        <div
+            class="container mx-auto px-6 md:px-12 flex justify-between items-center glass-nav rounded-2xl mx-4 mt-2 px-6 py-4 max-w-7xl relative mx-auto">
+            <a href="#home"
+                class="text-2xl font-display font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-purple-400 logo-link hover:scale-105 transition-transform">
                 RT<span class="text-slate-100">.</span>
             </a>
 
             <!-- Desktop Nav -->
             <nav class="hidden md:flex gap-8">
-                <a href="#about" class="nav-link text-sm font-medium text-slate-300 transition-colors hover:text-cyan-400">About</a>
-                <a href="#skills" class="nav-link text-sm font-medium text-slate-300 transition-colors hover:text-cyan-400">Skills</a>
-                <a href="#projects" class="nav-link text-sm font-medium text-slate-300 transition-colors hover:text-cyan-400">Projects</a>
-                <a href="#contact" class="nav-link text-sm font-medium text-slate-300 transition-colors hover:text-cyan-400">Contact</a>
+                <a href="#about"
+                    class="nav-link text-sm font-medium text-slate-300 transition-colors hover:text-brand-400">About</a>
+                <a href="#skills"
+                    class="nav-link text-sm font-medium text-slate-300 transition-colors hover:text-brand-400">Skills</a>
+                <a href="#projects"
+                    class="nav-link text-sm font-medium text-slate-300 transition-colors hover:text-brand-400">Projects</a>
+                <a href="#contact"
+                    class="nav-link text-sm font-medium text-slate-300 transition-colors hover:text-brand-400">Contact</a>
             </nav>
 
             <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-cyan-400 transition-colors" aria-label="Toggle Menu">
+            <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-cyan-400 transition-colors"
+                aria-label="Toggle Menu">
                 <!-- Menu Icon -->
-                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="block"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="block">
+                    <line x1="4" x2="20" y1="12" y2="12" />
+                    <line x1="4" x2="20" y1="6" y2="6" />
+                    <line x1="4" x2="20" y1="18" y2="18" />
+                </svg>
                 <!-- Close Icon -->
-                <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="hidden">
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                </svg>
             </button>
         </div>
 
         <!-- Mobile Nav Menu -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-slate-800 shadow-xl border-t border-slate-700">
-            <div class="flex flex-col py-4 px-6 gap-4">
-                <a href="#about" class="mobile-nav-link text-left text-lg font-medium text-slate-300 hover:text-cyan-400 py-2 border-b border-slate-700/50">About</a>
-                <a href="#skills" class="mobile-nav-link text-left text-lg font-medium text-slate-300 hover:text-cyan-400 py-2 border-b border-slate-700/50">Skills</a>
-                <a href="#projects" class="mobile-nav-link text-left text-lg font-medium text-slate-300 hover:text-cyan-400 py-2 border-b border-slate-700/50">Projects</a>
-                <a href="#contact" class="mobile-nav-link text-left text-lg font-medium text-slate-300 hover:text-cyan-400 py-2">Contact</a>
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-full left-4 right-4 mt-2 bg-dark-800/90 backdrop-blur-xl shadow-2xl border border-white/10 rounded-2xl overflow-hidden">
+            <div class="flex flex-col py-4 px-6 gap-2">
+                <a href="#about"
+                    class="mobile-nav-link text-left text-lg font-medium text-slate-300 hover:text-brand-400 py-3 border-b border-white/5 transition-colors">About</a>
+                <a href="#skills"
+                    class="mobile-nav-link text-left text-lg font-medium text-slate-300 hover:text-brand-400 py-3 border-b border-white/5 transition-colors">Skills</a>
+                <a href="#projects"
+                    class="mobile-nav-link text-left text-lg font-medium text-slate-300 hover:text-brand-400 py-3 border-b border-white/5 transition-colors">Projects</a>
+                <a href="#contact"
+                    class="mobile-nav-link text-left text-lg font-medium text-slate-300 hover:text-brand-400 py-3 transition-colors">Contact</a>
             </div>
         </div>
     </header>
 
     <main>
         <!-- HERO SECTION -->
-        <section id="home" class="min-h-screen flex items-center pt-20 pb-12 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto relative overflow-hidden">
-            <!-- Background decorative elements -->
-            <div class="absolute top-1/4 -right-64 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="absolute bottom-1/4 -left-64 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
+        <section id="home"
+            class="min-h-screen flex items-center pt-20 pb-12 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto relative">
             <div class="relative z-10 w-full reveal">
-                <p class="text-cyan-400 font-mono mb-4 md:mb-6 tracking-wide">Hi, my name is</p>
-                <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-slate-100 mb-4 md:mb-6 tracking-tight">
+                <p
+                    class="text-brand-400 font-mono mb-4 md:mb-6 tracking-widest uppercase text-sm font-semibold tracking-[0.2em] flex items-center gap-3">
+                    <span class="w-12 h-[2px] bg-brand-400 inline-block"></span>
+                    Hi, my name is
+                </p>
+                <h1
+                    class="text-5xl md:text-7xl lg:text-8xl font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-slate-100 via-slate-300 to-slate-500 mb-2 md:mb-4 tracking-tight pb-2">
                     Ramuthu theniya.
                 </h1>
-                
+
                 <!-- Replaced static text with interactive typing container -->
-                <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-400 mb-8 md:mb-10 tracking-tight h-[80px] md:h-[100px]">
+                <h2
+                    class="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-purple-400 mb-8 md:mb-10 tracking-tight h-[80px] md:h-[100px] pb-2">
                     <span id="typed-text"></span><span class="typing-cursor"></span>
                 </h2>
-                
-                <p class="text-lg md:text-xl text-slate-400 max-w-2xl mb-12 leading-relaxed">
-                    Building digital experiences that combine beautiful design with robust engineering.
+
+                <p class="text-lg md:text-xl text-slate-400 max-w-2xl mb-12 leading-relaxed font-light">
+                    Building digital experiences that combine <span class="text-slate-200 font-medium">beautiful
+                        design</span> with <span class="text-slate-200 font-medium">robust engineering</span>. Let's
+                    create something extraordinary together.
                 </p>
-                
-                <div class="flex flex-wrap gap-4">
-                    <a href="#projects" class="nav-link px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-lg transition-all duration-300 shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] transform hover:-translate-y-1 flex items-center gap-2">
-                        Check out my work
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+
+                <div class="flex flex-wrap gap-6 items-center">
+                    <a href="#projects"
+                        class="nav-link group relative px-8 py-4 bg-brand-500 text-white font-semibold rounded-full transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                        <div
+                            class="absolute inset-0 w-full h-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                        <span class="relative z-10 flex items-center gap-2">
+                            Check out my work
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
+                                <path d="m9 18 6-6-6-6" />
+                            </svg>
+                        </span>
+                        <div
+                            class="absolute -inset-1 bg-brand-400/50 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10">
+                        </div>
                     </a>
-                    <a href="https://github.com/Ramuthu-creator" target="_blank" rel="noreferrer" class="px-8 py-4 border border-slate-600 hover:border-cyan-400 hover:text-cyan-400 text-slate-300 font-semibold rounded-lg transition-all duration-300 flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    <a href="https://github.com/Ramuthu-creator" target="_blank" rel="noreferrer"
+                        class="group px-8 py-4 bg-white/5 border border-white/10 hover:border-brand-400/50 hover:bg-white/10 text-slate-300 font-medium rounded-full transition-all duration-300 flex items-center gap-2 backdrop-blur-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="group-hover:text-brand-400 transition-colors">
+                            <path
+                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                            <path d="M9 18c-4.51 2-5-2-7-2" />
+                        </svg>
                         GitHub
                     </a>
                 </div>
@@ -96,127 +193,196 @@
         </section>
 
         <!-- ABOUT SECTION -->
-        <section id="about" class="py-24 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto border-t border-slate-800/50 reveal">
+        <section id="about"
+            class="py-24 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto border-t border-white/5 relative z-10 reveal">
             <div class="mb-12 md:mb-20">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-100 mb-4 flex items-center gap-4">
-                    <span class="w-8 md:w-16 h-px bg-cyan-500 hidden sm:block"></span>
-                    About Me
-                    <span class="w-8 md:w-16 h-px bg-cyan-500 sm:hidden block"></span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-100 mb-4 flex items-center gap-4">
+                    <span class="w-8 md:w-16 h-px bg-brand-400 hidden sm:block"></span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-slate-100 to-slate-400">About
+                        Me</span>
+                    <span class="w-8 md:w-16 h-px bg-brand-400 sm:hidden block"></span>
                 </h2>
             </div>
-            
+
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="space-y-6 text-slate-300 text-lg leading-relaxed">
-                    <p>I am an undergraduate student who is passionate about software engineering and building web applications. I have experience working with technologies like React and Node.js through my projects.I enjoy learning new things and trying out new technologies to improve my skills. I like building simple, user-friendly, and useful applications.</p>
-                    <p>Right now, I am focusing on improving my development skills and creating accessible and inclusive digital experiences. I am also preparing to start my career in the IT industry.</p>
+                    <p>I am an undergraduate student who is passionate about software engineering and building web
+                        applications. I have experience working with technologies like React and Node.js through my
+                        projects.I enjoy learning new things and trying out new technologies to improve my skills. I
+                        like building simple, user-friendly, and useful applications.</p>
+                    <p>Right now, I am focusing on improving my development skills and creating accessible and inclusive
+                        digital experiences. I am also preparing to start my career in the IT industry.</p>
                 </div>
-                <div class="relative group mx-auto md:ml-auto md:mr-0 w-64 md:w-80 aspect-square">
-                    <!-- Image styling with decorative borders -->
-                    <div class="absolute inset-0 border-2 border-cyan-400 rounded-lg translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300 z-0"></div>
-                    <div class="absolute inset-0 bg-slate-800 rounded-lg overflow-hidden z-10 border border-slate-700 group-hover:border-cyan-400/50 transition-colors duration-300 flex items-center justify-center tilt-card">
-                       <!-- Profile Image -->
-                       <img src="assets/IMG_2597.png" alt="Ramuthu theniya" class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-500" />
+                <div class="relative group mx-auto md:ml-auto md:mr-0 w-72 md:w-96 aspect-square tilt-card mt-12 md:mt-0">
+                    <!-- Background Circle Frame -->
+                    <div class="absolute inset-0 rounded-full border border-white/10 bg-gradient-to-b from-brand-500/10 to-transparent shadow-[0_0_40px_rgba(14,165,233,0.15)] group-hover:shadow-[0_0_60px_rgba(14,165,233,0.3)] group-hover:border-brand-400/30 transition-all duration-500 z-0 overflow-hidden">
+                        <!-- Inner glow inside circle to ground the bottom -->
+                        <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-500/20 to-transparent"></div>
                     </div>
+                    
+                    <!-- Decorative outer glow -->
+                    <div class="absolute inset-0 bg-brand-500/20 rounded-full filter blur-3xl group-hover:bg-brand-500/40 transition-colors duration-500 z-0 pointer-events-none"></div>
+
+                    <!-- Profile Image that pops out -->
+                    <img src="assets/Profile Photo.png" alt="Ramuthu theniya"
+                        class="absolute bottom-0 left-1/2 -translate-x-1/2 h-[130%] max-w-none w-auto z-10 object-bottom filter drop-shadow-[0_15px_15px_rgba(0,0,0,0.8)] grayscale group-hover:grayscale-0 group-hover:drop-shadow-[0_20px_25px_rgba(14,165,233,0.4)] group-hover:scale-105 transition-all duration-500 origin-bottom" />
                 </div>
             </div>
         </section>
 
         <!-- SKILLS SECTION -->
-        <section id="skills" class="py-24 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto border-t border-slate-800/50 reveal">
+        <section id="skills"
+            class="py-24 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto border-t border-white/5 relative z-10 reveal">
             <div class="mb-12 md:mb-20">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-100 mb-4 flex items-center gap-4">
-                    <span class="w-8 md:w-16 h-px bg-cyan-500 hidden sm:block"></span>
-                    My Skills
-                    <span class="w-8 md:w-16 h-px bg-cyan-500 sm:hidden block"></span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-100 mb-4 flex items-center gap-4">
+                    <span class="w-8 md:w-16 h-px bg-brand-400 hidden sm:block"></span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-slate-100 to-slate-400">My
+                        Skills</span>
+                    <span class="w-8 md:w-16 h-px bg-brand-400 sm:hidden block"></span>
                 </h2>
-                <p class="text-slate-400 max-w-2xl">Technologies and tools I work with on a daily basis.</p>
+                <p class="text-slate-400 max-w-2xl text-lg font-light">Technologies and tools I work with on a daily
+                    basis.</p>
             </div>
-            
+
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Skill Group 1 -->
-                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700/50 hover:border-cyan-500/30 hover:-translate-y-2 transition-all duration-300 reveal" style="transition-delay: 100ms;">
-                    <div class="flex items-center gap-3 mb-6 text-cyan-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="9" x2="9" y1="21" y2="9"/></svg>
-                        <h3 class="text-xl font-bold text-slate-100">Frontend</h3>
+                <div class="bg-white/[0.03] backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:border-brand-500/50 hover:bg-white/[0.05] hover:-translate-y-2 transition-all duration-300 reveal group shadow-xl"
+                    style="transition-delay: 100ms;">
+                    <div
+                        class="flex items-center gap-3 mb-6 text-brand-400 group-hover:scale-110 origin-left transition-transform duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                            <line x1="3" x2="21" y1="9" y2="9" />
+                            <line x1="9" x2="9" y1="21" y2="9" />
+                        </svg>
+                        <h3 class="text-xl font-display font-bold text-slate-100">Frontend</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-900/80 text-slate-300 text-sm font-medium rounded-full border border-slate-700 hover:border-cyan-400 transition-colors cursor-default">React</span>
-                        <span class="px-3 py-1 bg-slate-900/80 text-slate-300 text-sm font-medium rounded-full border border-slate-700 hover:border-cyan-400 transition-colors cursor-default">TypeScript</span>
-                        <span class="px-3 py-1 bg-slate-900/80 text-slate-300 text-sm font-medium rounded-full border border-slate-700 hover:border-cyan-400 transition-colors cursor-default">Tailwind CSS</span>
-                        <span class="px-3 py-1 bg-slate-900/80 text-slate-300 text-sm font-medium rounded-full border border-slate-700 hover:border-cyan-400 transition-colors cursor-default">Next.js</span>
+                        <span
+                            class="px-4 py-1.5 bg-dark-900/50 text-slate-300 text-sm font-medium rounded-full border border-white/10 hover:border-brand-400 hover:text-brand-400 transition-colors cursor-default">React</span>
+                        <span
+                            class="px-4 py-1.5 bg-dark-900/50 text-slate-300 text-sm font-medium rounded-full border border-white/10 hover:border-brand-400 hover:text-brand-400 transition-colors cursor-default">TypeScript</span>
+                        <span
+                            class="px-4 py-1.5 bg-dark-900/50 text-slate-300 text-sm font-medium rounded-full border border-white/10 hover:border-brand-400 hover:text-brand-400 transition-colors cursor-default">Tailwind
+                            CSS</span>
+                        <span
+                            class="px-4 py-1.5 bg-dark-900/50 text-slate-300 text-sm font-medium rounded-full border border-white/10 hover:border-brand-400 hover:text-brand-400 transition-colors cursor-default">Next.js</span>
                     </div>
                 </div>
 
                 <!-- Skill Group 2 -->
-                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700/50 hover:border-cyan-500/30 hover:-translate-y-2 transition-all duration-300 reveal" style="transition-delay: 200ms;">
-                    <div class="flex items-center gap-3 mb-6 text-cyan-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
-                        <h3 class="text-xl font-bold text-slate-100">Backend</h3>
+                <div class="bg-white/[0.03] backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:border-brand-500/50 hover:bg-white/[0.05] hover:-translate-y-2 transition-all duration-300 reveal group shadow-xl"
+                    style="transition-delay: 200ms;">
+                    <div
+                        class="flex items-center gap-3 mb-6 text-brand-400 group-hover:scale-110 origin-left transition-transform duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <ellipse cx="12" cy="5" rx="9" ry="3" />
+                            <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+                            <path d="M3 12A9 3 0 0 0 21 12" />
+                        </svg>
+                        <h3 class="text-xl font-display font-bold text-slate-100">Backend</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-900/80 text-slate-300 text-sm font-medium rounded-full border border-slate-700 hover:border-cyan-400 transition-colors cursor-default">Node.js</span>
-                        <span class="px-3 py-1 bg-slate-900/80 text-slate-300 text-sm font-medium rounded-full border border-slate-700 hover:border-cyan-400 transition-colors cursor-default">Express</span>
-                        <span class="px-3 py-1 bg-slate-900/80 text-slate-300 text-sm font-medium rounded-full border border-slate-700 hover:border-cyan-400 transition-colors cursor-default">Python</span>
-                        <span class="px-3 py-1 bg-slate-900/80 text-slate-300 text-sm font-medium rounded-full border border-slate-700 hover:border-cyan-400 transition-colors cursor-default">PostgreSQL</span>
+                        <span
+                            class="px-4 py-1.5 bg-dark-900/50 text-slate-300 text-sm font-medium rounded-full border border-white/10 hover:border-brand-400 hover:text-brand-400 transition-colors cursor-default">Node.js</span>
+                        <span
+                            class="px-4 py-1.5 bg-dark-900/50 text-slate-300 text-sm font-medium rounded-full border border-white/10 hover:border-brand-400 hover:text-brand-400 transition-colors cursor-default">Express</span>
+                        <span
+                            class="px-4 py-1.5 bg-dark-900/50 text-slate-300 text-sm font-medium rounded-full border border-white/10 hover:border-brand-400 hover:text-brand-400 transition-colors cursor-default">Python</span>
+                        <span
+                            class="px-4 py-1.5 bg-dark-900/50 text-slate-300 text-sm font-medium rounded-full border border-white/10 hover:border-brand-400 hover:text-brand-400 transition-colors cursor-default">PostgreSQL</span>
                     </div>
                 </div>
 
                 <!-- Skill Group 3 -->
-                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700/50 hover:border-cyan-500/30 hover:-translate-y-2 transition-all duration-300 reveal" style="transition-delay: 300ms;">
-                    <div class="flex items-center gap-3 mb-6 text-cyan-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
-                        <h3 class="text-xl font-bold text-slate-100">Tools & Cloud</h3>
+                <div class="bg-white/[0.03] backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:border-brand-500/50 hover:bg-white/[0.05] hover:-translate-y-2 transition-all duration-300 reveal group shadow-xl"
+                    style="transition-delay: 300ms;">
+                    <div
+                        class="flex items-center gap-3 mb-6 text-brand-400 group-hover:scale-110 origin-left transition-transform duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m18 16 4-4-4-4" />
+                            <path d="m6 8-4 4 4 4" />
+                            <path d="m14.5 4-5 16" />
+                        </svg>
+                        <h3 class="text-xl font-display font-bold text-slate-100">Tools & Cloud</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-900/80 text-slate-300 text-sm font-medium rounded-full border border-slate-700 hover:border-cyan-400 transition-colors cursor-default">Git</span>
-                        <span class="px-3 py-1 bg-slate-900/80 text-slate-300 text-sm font-medium rounded-full border border-slate-700 hover:border-cyan-400 transition-colors cursor-default">Docker</span>
-                        <span class="px-3 py-1 bg-slate-900/80 text-slate-300 text-sm font-medium rounded-full border border-slate-700 hover:border-cyan-400 transition-colors cursor-default">AWS</span>
-                        <span class="px-3 py-1 bg-slate-900/80 text-slate-300 text-sm font-medium rounded-full border border-slate-700 hover:border-cyan-400 transition-colors cursor-default">CI/CD</span>
+                        <span
+                            class="px-4 py-1.5 bg-dark-900/50 text-slate-300 text-sm font-medium rounded-full border border-white/10 hover:border-brand-400 hover:text-brand-400 transition-colors cursor-default">Git</span>
+                        <span
+                            class="px-4 py-1.5 bg-dark-900/50 text-slate-300 text-sm font-medium rounded-full border border-white/10 hover:border-brand-400 hover:text-brand-400 transition-colors cursor-default">Docker</span>
+                        <span
+                            class="px-4 py-1.5 bg-dark-900/50 text-slate-300 text-sm font-medium rounded-full border border-white/10 hover:border-brand-400 hover:text-brand-400 transition-colors cursor-default">AWS</span>
+                        <span
+                            class="px-4 py-1.5 bg-dark-900/50 text-slate-300 text-sm font-medium rounded-full border border-white/10 hover:border-brand-400 hover:text-brand-400 transition-colors cursor-default">CI/CD</span>
                     </div>
                 </div>
 
                 <!-- Skill Group 4 -->
-                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700/50 hover:border-cyan-500/30 hover:-translate-y-2 transition-all duration-300 reveal" style="transition-delay: 400ms;">
-                    <div class="flex items-center gap-3 mb-6 text-cyan-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
-                        <h3 class="text-xl font-bold text-slate-100">Mobile</h3>
+                <div class="bg-white/[0.03] backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:border-brand-500/50 hover:bg-white/[0.05] hover:-translate-y-2 transition-all duration-300 reveal group shadow-xl"
+                    style="transition-delay: 400ms;">
+                    <div
+                        class="flex items-center gap-3 mb-6 text-brand-400 group-hover:scale-110 origin-left transition-transform duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+                            <path d="M12 18h.01" />
+                        </svg>
+                        <h3 class="text-xl font-display font-bold text-slate-100">Mobile</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-900/80 text-slate-300 text-sm font-medium rounded-full border border-slate-700 hover:border-cyan-400 transition-colors cursor-default">React Native</span>
-                        <span class="px-3 py-1 bg-slate-900/80 text-slate-300 text-sm font-medium rounded-full border border-slate-700 hover:border-cyan-400 transition-colors cursor-default">Flutter</span>
-                        <span class="px-3 py-1 bg-slate-900/80 text-slate-300 text-sm font-medium rounded-full border border-slate-700 hover:border-cyan-400 transition-colors cursor-default">iOS UI/UX</span>
+                        <span
+                            class="px-4 py-1.5 bg-dark-900/50 text-slate-300 text-sm font-medium rounded-full border border-white/10 hover:border-brand-400 hover:text-brand-400 transition-colors cursor-default">React
+                            Native</span>
+                        <span
+                            class="px-4 py-1.5 bg-dark-900/50 text-slate-300 text-sm font-medium rounded-full border border-white/10 hover:border-brand-400 hover:text-brand-400 transition-colors cursor-default">Flutter</span>
+                        <span
+                            class="px-4 py-1.5 bg-dark-900/50 text-slate-300 text-sm font-medium rounded-full border border-white/10 hover:border-brand-400 hover:text-brand-400 transition-colors cursor-default">iOS
+                            UI/UX</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- PROJECTS SECTION -->
-        <section id="projects" class="py-24 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto border-t border-slate-800/50">
+        <section id="projects"
+            class="py-24 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto border-t border-white/5 relative z-10">
             <div class="mb-12 md:mb-20 reveal">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-100 mb-4 flex items-center gap-4">
-                    <span class="w-8 md:w-16 h-px bg-cyan-500 hidden sm:block"></span>
-                    Featured Projects
-                    <span class="w-8 md:w-16 h-px bg-cyan-500 sm:hidden block"></span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-100 mb-4 flex items-center gap-4">
+                    <span class="w-8 md:w-16 h-px bg-brand-400 hidden sm:block"></span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-slate-100 to-slate-400">Featured
+                        Projects</span>
+                    <span class="w-8 md:w-16 h-px bg-brand-400 sm:hidden block"></span>
                 </h2>
-                <p class="text-slate-400 max-w-2xl">Some things I've built recently.</p>
+                <p class="text-slate-400 max-w-2xl text-lg font-light">Some things I've built recently.</p>
             </div>
-            
+
             <div class="space-y-24">
                 <!-- Project 1 -->
                 <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-center group reveal">
                     <!-- Project Image -->
-                    <div class="w-full md:w-3/5 relative rounded-xl overflow-hidden aspect-video border border-slate-700/50 tilt-card">
-                        <div class="absolute inset-0 bg-cyan-500/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
-                        <img src="assets/RentXpress.png" alt="E-Commerce Platform" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"/>
+                    <div
+                        class="w-full md:w-3/5 relative rounded-2xl overflow-hidden aspect-video border border-white/10 tilt-card shadow-2xl">
+                        <div
+                            class="absolute inset-0 bg-brand-500/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none mix-blend-multiply">
+                        </div>
+                        <img src="assets/RentXpress.png" alt="E-Commerce Platform"
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <!-- Project Info -->
                     <div class="w-full md:w-2/5 flex flex-col md:items-start text-left relative z-20">
-                        <p class="text-cyan-400 font-mono text-sm mb-2">Featured Project</p>
-                        <h3 class="text-2xl md:text-3xl font-bold text-slate-100 mb-6 hover:text-cyan-400 transition-colors">
+                        <p class="text-brand-400 font-mono text-sm mb-2 tracking-widest uppercase">Featured Project</p>
+                        <h3
+                            class="text-2xl md:text-3xl font-display font-bold text-slate-100 mb-6 hover:text-brand-400 transition-colors">
                             <a href="#" target="_blank" rel="noreferrer">RentXpress</a>
                         </h3>
-                        <div class="bg-slate-800 p-6 rounded-xl shadow-xl border border-slate-700/50 mb-6 text-slate-300 text-base md:text-lg leading-relaxed md:-ml-12 hover:-translate-y-1 hover:shadow-[0_10px_30px_-15px_rgba(6,182,212,0.3)] transition-all duration-300 cursor-default">
-                            <p>Car rental system with real-time availability and booking management, built using HTML, CSS, JavaScript, and MySQL.</p>
+                        <div
+                            class="bg-white/[0.03] backdrop-blur-xl p-6 md:p-8 rounded-2xl shadow-2xl border border-white/10 mb-6 text-slate-300 text-base md:text-lg leading-relaxed md:-ml-16 hover:-translate-y-1 transition-transform duration-300">
+                            <p>Car rental system with real-time availability and booking management, built using HTML,
+                                CSS, JavaScript, and MySQL.</p>
                         </div>
                         <ul class="flex flex-wrap gap-4 text-slate-400 font-mono text-sm mb-8 justify-start">
                             <li>HTML</li>
@@ -225,31 +391,52 @@
                             <li>MySQL</li>
                         </ul>
                         <div class="flex gap-4 text-slate-300">
-                            <a href="https://github.com/Ramuthu-creator/rentxpress" class="hover:text-cyan-400 transition-colors p-2 -m-2" aria-label="GitHub Link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                            <a href="https://github.com/Ramuthu-creator/rentxpress"
+                                class="hover:text-brand-400 transition-colors p-2 -m-2" aria-label="GitHub Link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                                    <path d="M9 18c-4.51 2-5-2-7-2" />
+                                </svg>
                             </a>
-                            <a href="https://github.com/Ramuthu-creator/rentxpress" class="hover:text-cyan-400 transition-colors p-2 -m-2" aria-label="External Link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                            <a href="https://github.com/Ramuthu-creator/rentxpress"
+                                class="hover:text-brand-400 transition-colors p-2 -m-2" aria-label="External Link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                    <polyline points="15 3 21 3 21 9" />
+                                    <line x1="10" x2="21" y1="14" y2="3" />
+                                </svg>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 3 -->
+                <!-- Project 2 -->
                 <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-center group reveal">
                     <!-- Project Image -->
-                    <div class="w-full md:w-3/5 relative rounded-xl overflow-hidden aspect-video border border-slate-700/50 tilt-card">
-                        <div class="absolute inset-0 bg-cyan-500/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
-                        <img src="assets/TechCare.png" alt="AI Content Generator" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"/>
+                    <div
+                        class="w-full md:w-3/5 relative rounded-2xl overflow-hidden aspect-video border border-white/10 tilt-card shadow-2xl">
+                        <div
+                            class="absolute inset-0 bg-brand-500/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none mix-blend-multiply">
+                        </div>
+                        <img src="assets/TechCare.png" alt="Tech Care Platform"
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <!-- Project Info -->
                     <div class="w-full md:w-2/5 flex flex-col md:items-start text-left relative z-20">
-                        <p class="text-cyan-400 font-mono text-sm mb-2">Featured Project</p>
-                        <h3 class="text-2xl md:text-3xl font-bold text-slate-100 mb-6 hover:text-cyan-400 transition-colors">
+                        <p class="text-brand-400 font-mono text-sm mb-2 tracking-widest uppercase">Featured Project</p>
+                        <h3
+                            class="text-2xl md:text-3xl font-display font-bold text-slate-100 mb-6 hover:text-brand-400 transition-colors">
                             <a href="#" target="_blank" rel="noreferrer">Tech Care</a>
                         </h3>
-                        <div class="bg-slate-800 p-6 rounded-xl shadow-xl border border-slate-700/50 mb-6 text-slate-300 text-base md:text-lg leading-relaxed md:-ml-12 hover:-translate-y-1 hover:shadow-[0_10px_30px_-15px_rgba(6,182,212,0.3)] transition-all duration-300 cursor-default">
-                            <p>A web application for managing and resolving IT support tickets, providing a centralized platform for users to submit requests and track their resolution.</p>
+                        <div
+                            class="bg-white/[0.03] backdrop-blur-xl p-6 md:p-8 rounded-2xl shadow-2xl border border-white/10 mb-6 text-slate-300 text-base md:text-lg leading-relaxed md:-ml-16 hover:-translate-y-1 transition-transform duration-300">
+                            <p>A web application for managing and resolving IT support tickets, providing a centralized
+                                platform for users to submit requests and track their resolution.</p>
                         </div>
                         <ul class="flex flex-wrap gap-4 text-slate-400 font-mono text-sm mb-8 justify-start">
                             <li>React</li>
@@ -258,31 +445,53 @@
                             <li>Firebase</li>
                         </ul>
                         <div class="flex gap-4 text-slate-300">
-                            <a href="https://github.com/Ramuthu-creator/tech-care" class="hover:text-cyan-400 transition-colors p-2 -m-2" aria-label="GitHub Link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                            <a href="https://github.com/Ramuthu-creator/tech-care"
+                                class="hover:text-brand-400 transition-colors p-2 -m-2" aria-label="GitHub Link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                                    <path d="M9 18c-4.51 2-5-2-7-2" />
+                                </svg>
                             </a>
-                            <a href="https://github.com/Ramuthu-creator/tech-care" class="hover:text-cyan-400 transition-colors p-2 -m-2" aria-label="External Link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                            <a href="https://github.com/Ramuthu-creator/tech-care"
+                                class="hover:text-brand-400 transition-colors p-2 -m-2" aria-label="External Link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                    <polyline points="15 3 21 3 21 9" />
+                                    <line x1="10" x2="21" y1="14" y2="3" />
+                                </svg>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 4 -->
+                <!-- Project 3 -->
                 <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-center group reveal">
                     <!-- Project Image -->
-                    <div class="w-full md:w-3/5 relative rounded-xl overflow-hidden aspect-video border border-slate-700/50 tilt-card">
-                        <div class="absolute inset-0 bg-cyan-500/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
-                        <img src="assets/NeighbourKnot.png" alt="Real Estate Finder App" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"/>
+                    <div
+                        class="w-full md:w-3/5 relative rounded-2xl overflow-hidden aspect-video border border-white/10 tilt-card shadow-2xl">
+                        <div
+                            class="absolute inset-0 bg-brand-500/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none mix-blend-multiply">
+                        </div>
+                        <img src="assets/NeighbourKnot.png" alt="Real Estate Finder App"
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <!-- Project Info -->
                     <div class="w-full md:w-2/5 flex flex-col md:items-start text-left relative z-20">
-                        <p class="text-cyan-400 font-mono text-sm mb-2">Featured Project</p>
-                        <h3 class="text-2xl md:text-3xl font-bold text-slate-100 mb-6 hover:text-cyan-400 transition-colors">
-                            <a href="https://github.com/Ramuthu-creator/neighbourknot" target="_blank" rel="noreferrer">NeighbourKnot</a>
+                        <p class="text-brand-400 font-mono text-sm mb-2 tracking-widest uppercase">Featured Project</p>
+                        <h3
+                            class="text-2xl md:text-3xl font-display font-bold text-slate-100 mb-6 hover:text-brand-400 transition-colors">
+                            <a href="https://github.com/Ramuthu-creator/neighbourknot" target="_blank"
+                                rel="noreferrer">NeighbourKnot</a>
                         </h3>
-                        <div class="bg-slate-800 p-6 rounded-xl shadow-xl border border-slate-700/50 mb-6 text-slate-300 text-base md:text-lg leading-relaxed md:-ml-12 hover:-translate-y-1 hover:shadow-[0_10px_30px_-15px_rgba(6,182,212,0.3)] transition-all duration-300 cursor-default">
-                            <p>A cross-platform mobile app for sharing skills through a token-based system, where users earn tokens by teaching others and use them to learn new skills from the community.</p>
+                        <div
+                            class="bg-white/[0.03] backdrop-blur-xl p-6 md:p-8 rounded-2xl shadow-2xl border border-white/10 mb-6 text-slate-300 text-base md:text-lg leading-relaxed md:-ml-16 hover:-translate-y-1 transition-transform duration-300">
+                            <p>A cross-platform mobile app for sharing skills through a token-based system, where users
+                                earn tokens by teaching others and use them to learn new skills from the community.</p>
                         </div>
                         <ul class="flex flex-wrap gap-4 text-slate-400 font-mono text-sm mb-8 justify-start">
                             <li>HTML</li>
@@ -291,11 +500,25 @@
                             <li>JavaScript</li>
                         </ul>
                         <div class="flex gap-4 text-slate-300">
-                            <a href="https://github.com/Ramuthu-creator/neighbourknot" class="hover:text-cyan-400 transition-colors p-2 -m-2" aria-label="GitHub Link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                            <a href="https://github.com/Ramuthu-creator/neighbourknot"
+                                class="hover:text-brand-400 transition-colors p-2 -m-2" aria-label="GitHub Link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                                    <path d="M9 18c-4.51 2-5-2-7-2" />
+                                </svg>
                             </a>
-                            <a href="https://github.com/Ramuthu-creator/neighbourknot" class="hover:text-cyan-400 transition-colors p-2 -m-2" aria-label="External Link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                            <a href="https://github.com/Ramuthu-creator/neighbourknot"
+                                class="hover:text-brand-400 transition-colors p-2 -m-2" aria-label="External Link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                    <polyline points="15 3 21 3 21 9" />
+                                    <line x1="10" x2="21" y1="14" y2="3" />
+                                </svg>
                             </a>
                         </div>
                     </div>
@@ -304,54 +527,96 @@
         </section>
 
         <!-- CONTACT SECTION -->
-        <section id="contact" class="py-32 px-6 md:px-12 lg:px-24 max-w-4xl mx-auto border-t border-slate-800/50 text-center reveal">
-            <p class="text-cyan-400 font-mono text-sm md:text-base mb-4 tracking-wider">04. What's Next?</p>
-            <h2 class="text-4xl md:text-6xl font-bold text-slate-100 mb-6 tracking-tight">Get In Touch</h2>
-            <p class="text-slate-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
-                I'm currently looking for new opportunities. Whether you have a question, a project proposal, or just want to say hi, I'll try my best to get back to you!
+        <section id="contact"
+            class="py-32 px-6 md:px-12 lg:px-24 max-w-4xl mx-auto border-t border-white/5 text-center relative z-10 reveal">
+            <p class="text-brand-400 font-mono text-sm md:text-base mb-4 tracking-widest uppercase">04. What's Next?</p>
+            <h2 class="text-4xl md:text-6xl font-display font-bold text-slate-100 mb-6 tracking-tight">Get In Touch</h2>
+            <p class="text-slate-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+                I'm currently looking for new opportunities. Whether you have a question, a project proposal, or just
+                want to say hi, I'll try my best to get back to you!
             </p>
-            <a href="mailto:tramuthu@gmail.com" class="inline-flex items-center gap-2 px-8 py-4 border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-slate-900 font-bold rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)]">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <a href="mailto:tramuthu@gmail.com"
+                class="inline-flex items-center gap-2 px-8 py-4 bg-brand-500/10 border border-brand-500/50 text-brand-400 hover:bg-brand-500 hover:text-white font-semibold rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(14,165,233,0.3)] backdrop-blur-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
                 Say Hello
             </a>
         </section>
     </main>
 
     <!-- FOOTER -->
-    <footer class="py-8 text-center text-slate-400 font-mono text-sm border-t border-slate-800/50 flex flex-col items-center gap-4">
+    <footer
+        class="py-8 text-center text-slate-500 font-mono text-sm border-t border-white/5 flex flex-col items-center gap-4 relative z-10 bg-dark-900/50 backdrop-blur-sm">
         <div class="flex gap-6 md:hidden">
-            <a href="https://github.com" class="hover:text-cyan-400 transition-colors hover:-translate-y-1 transform">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            <a href="https://github.com" class="hover:text-brand-400 transition-colors hover:-translate-y-1 transform">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                    <path d="M9 18c-4.51 2-5-2-7-2" />
+                </svg>
             </a>
-            <a href="https://linkedin.com" class="hover:text-cyan-400 transition-colors hover:-translate-y-1 transform">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            <a href="https://linkedin.com"
+                class="hover:text-brand-400 transition-colors hover:-translate-y-1 transform">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect width="4" height="12" x="2" y="9" />
+                    <circle cx="4" cy="4" r="2" />
+                </svg>
             </a>
-            <button onclick="copyEmail()" class="hover:text-cyan-400 transition-colors hover:-translate-y-1 transform">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <button onclick="copyEmail()" class="hover:text-brand-400 transition-colors hover:-translate-y-1 transform">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
             </button>
         </div>
         <p>
-            Designed & Built by <a href="#" class="text-cyan-400 hover:underline">Ramuthu theniya</a>
+            Designed & Built by <a href="#" class="text-brand-400 hover:text-brand-300 transition-colors">Ramuthu
+                theniya</a>
         </p>
         <p class="text-xs text-slate-600">© <span id="year"></span> All rights reserved.</p>
     </footer>
 
     <!-- FIXED SOCIAL LINKS (Desktop) -->
-    <div class="hidden md:flex flex-col gap-6 fixed bottom-0 left-12 after:content-[''] after:w-px after:h-24 after:bg-slate-600 after:mx-auto items-center z-40 reveal">
-        <a href="https://github.com" class="text-slate-400 hover:text-cyan-400 hover:-translate-y-1 transition-all p-2" target="_blank" rel="noreferrer">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+    <div
+        class="hidden md:flex flex-col gap-6 fixed bottom-0 left-12 after:content-[''] after:w-px after:h-24 after:bg-white/10 after:mx-auto items-center z-40 reveal mix-blend-difference">
+        <a href="https://github.com" class="text-slate-400 hover:text-brand-400 hover:-translate-y-1 transition-all p-2"
+            target="_blank" rel="noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                <path d="M9 18c-4.51 2-5-2-7-2" />
+            </svg>
         </a>
-        <a href="https://linkedin.com" class="text-slate-400 hover:text-cyan-400 hover:-translate-y-1 transition-all p-2" target="_blank" rel="noreferrer">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+        <a href="https://linkedin.com"
+            class="text-slate-400 hover:text-brand-400 hover:-translate-y-1 transition-all p-2" target="_blank"
+            rel="noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect width="4" height="12" x="2" y="9" />
+                <circle cx="4" cy="4" r="2" />
+            </svg>
         </a>
     </div>
 
     <!-- FIXED EMAIL LINK (Desktop) - Changed to Copy to Clipboard -->
-    <div class="hidden md:flex flex-col gap-6 fixed bottom-0 right-12 after:content-[''] after:w-px after:h-24 after:bg-slate-600 after:mx-auto items-center z-40 reveal">
-        <button onclick="copyEmail()" class="text-slate-400 hover:text-cyan-400 hover:-translate-y-1 transition-all p-2 font-mono text-sm tracking-widest cursor-pointer" style="writing-mode: vertical-rl;">
+    <div
+        class="hidden md:flex flex-col gap-6 fixed bottom-0 right-12 after:content-[''] after:w-px after:h-24 after:bg-white/10 after:mx-auto items-center z-40 reveal mix-blend-difference">
+        <button onclick="copyEmail()"
+            class="text-slate-400 hover:text-brand-400 hover:-translate-y-1 transition-all p-2 font-mono text-sm tracking-widest cursor-pointer"
+            style="writing-mode: vertical-rl;">
             tramuthu@gmail.com
         </button>
     </div>
 </body>
 <script src="script.js"></script>
+
 </html>
