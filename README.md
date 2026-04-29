@@ -22,34 +22,6 @@ I'm Ramuthu Theniya, a dedicated software developer with a passion for creating 
 - Version Control
 - Agile Development
 
-## 📁 Featured Projects
-
-### Project 1: [Project Name]
-- **Description**: Brief description of what the project does
-- **Technologies**: List of technologies used
-- **Repository**: [Link to repo]
-- **Live Demo**: [Link if available]
-
-### Project 2: [Project Name]
-- **Description**: Brief description of what the project does
-- **Technologies**: List of technologies used
-- **Repository**: [Link to repo]
-- **Live Demo**: [Link if available]
-
-## 🎓 Education & Certifications
-
-- Relevant certifications or educational background
-- Courses completed
-- Training programs
-
-## 💼 Experience
-
-- **[Company/Role]** - [Duration]
-  - Describe key responsibilities and achievements  
-  
-- **[Company/Role]** - [Duration]
-  - Describe key responsibilities and achievements
-
 ## 📊 GitHub Statistics
 
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Ramuthu-creator&show_icons=true&theme=tokyonight)
@@ -63,10 +35,9 @@ I'm Ramuthu Theniya, a dedicated software developer with a passion for creating 
 
 ## 📬 Contact
 
-- **Email**: [your-email@example.com]
-- **LinkedIn**: [Your LinkedIn URL]
-- **Twitter**: [Your Twitter Handle]
-- **Portfolio**: [Your Portfolio Website]
+- **Email**: [tramuthu@gmail.com]
+- **LinkedIn**: [www.linkedin.com/in/ramuthu-theniya]
+- **Portfolio**: [[Your Portfolio Website](https://ramuthu-creator.github.io/Ramuthu-Theniya-Portifolio/)]
 
 ## 📄 Resume
 
