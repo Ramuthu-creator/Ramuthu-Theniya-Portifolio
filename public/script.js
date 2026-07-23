@@ -183,3 +183,45 @@ function copyEmail() {
         toast.classList.remove("show");
     }, 3000);
 }
+
+// 9. Load More Projects Logic
+const projectCards = document.querySelectorAll('.project-card');
+const loadMoreBtn = document.getElementById('load-more-btn');
+let currentVisibleProjects = 2;
+
+if (projectCards.length > 0) {
+    // Hide projects beyond the initial count
+    projectCards.forEach((card, index) => {
+        if (index >= currentVisibleProjects) {
+            card.style.display = 'none';
+            card.classList.remove('active'); // Remove reveal active state if any
+        }
+    });
+
+    if (loadMoreBtn) {
+        if (projectCards.length <= currentVisibleProjects) {
+            loadMoreBtn.style.display = 'none';
+        }
+
+        loadMoreBtn.addEventListener('click', () => {
+            const nextVisibleProjects = currentVisibleProjects + 2;
+            
+            for (let i = currentVisibleProjects; i < nextVisibleProjects && i < projectCards.length; i++) {
+                const card = projectCards[i];
+                card.style.display = 'flex'; // Restore original flex display
+                
+                // Allow browser to render display: flex before adding active class for animation
+                setTimeout(() => {
+                    card.classList.add('active');
+                }, 50);
+            }
+            
+            currentVisibleProjects = nextVisibleProjects;
+            
+            // Hide button if all projects are visible
+            if (currentVisibleProjects >= projectCards.length) {
+                loadMoreBtn.style.display = 'none';
+            }
+        });
+    }
+}
