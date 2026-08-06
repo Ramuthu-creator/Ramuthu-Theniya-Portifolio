@@ -13,8 +13,28 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Ramuthu Theniya | Portfolio",
-  description: "Building digital experiences that combine beautiful design with robust engineering.",
+  metadataBase: new URL('https://ramuthu-theniya-portfolio.web.app'),
+  title: "Ramuthu Theniya | Software Developer & Web Designer",
+  description: "Portfolio of Ramuthu Theniya, a Software Developer and Web Designer specializing in React, Node.js, and building modern web applications.",
+  openGraph: {
+    title: "Ramuthu Theniya | Software Developer & Web Designer",
+    description: "Portfolio of Ramuthu Theniya, a Software Developer and Web Designer specializing in React, Node.js, and building modern web applications.",
+    images: [
+      {
+        url: "/assets/DP.png",
+        width: 1200,
+        height: 630,
+        alt: "Ramuthu Theniya DP",
+      }
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ramuthu Theniya | Software Developer & Web Designer",
+    description: "Portfolio of Ramuthu Theniya, a Software Developer and Web Designer specializing in React, Node.js, and building modern web applications.",
+    images: ["/assets/DP.png"],
+  },
 };
 
 export default function RootLayout({

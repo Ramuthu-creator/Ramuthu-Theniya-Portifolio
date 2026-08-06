@@ -19,7 +19,7 @@ const projects = [
   },
   {
     id: "PROJ_ID: TECHCARE",
-    year: "2023",
+    year: "2025",
     title: "Tech Care",
     description: "A web application for managing and resolving IT support tickets, providing a centralized platform for users to submit requests and track their resolution.",
     tech: ["REACT", "TAILWIND", "JAVASCRIPT", "FIREBASE"],
@@ -28,7 +28,7 @@ const projects = [
   },
   {
     id: "PROJ_ID: NEIGHBOURKNOT",
-    year: "2024",
+    year: "2026",
     title: "NeighbourKnot",
     description: "A cross-platform mobile app for sharing skills through a token-based system, where users earn tokens by teaching others and use them to learn new skills from the community.",
     tech: ["HTML", "CSS", "FIREBASE", "JAVASCRIPT"],
@@ -37,11 +37,20 @@ const projects = [
   },
   {
     id: "PROJ_ID: FIN-PLAN",
-    year: "2024",
+    year: "2026",
     title: "Fin-Plan",
     description: "A comprehensive Flutter-based mobile application for managing personal finances. Features include expense tracking, budget management, financial analytics, and goal planning with a secure data management system.",
     tech: ["FLUTTER", "DART", "C++", "CMAKE"],
     github: "https://github.com/Ramuthu-creator/Fin-Plan",
+    live: "#",
+  },
+  {
+    id: "PROJ_ID: HAND-LANDMARK",
+    year: "2025",
+    title: "Hand Landmark Model",
+    description: "A computer vision application that detects and visualizes hand landmarks using Google's MediaPipe framework. Features real-time tracking, animated rainbow connections, and multi-hand detection.",
+    tech: ["PYTHON", "OPENCV", "MEDIAPIPE", "NUMPY"],
+    github: "#",
     live: "#",
   },
   {
@@ -60,7 +69,6 @@ const projects = [
     description: "A decentralized full-stack ecosystem designed to translate undergraduate IT research into commercial ventures. It securely connects students with tech investors using SHA-256 hashing for intellectual property protection.",
     tech: ["MONGODB", "EXPRESS.JS", "REACT", "NODE.JS"],
     github: "#",
-    live: "#",
   },
 ];
 
@@ -74,7 +82,7 @@ export default function Projects() {
 
     // Use GSAP ScrollTrigger to scrub horizontal translate based on vertical scroll
     gsap.to(trackRef.current, {
-      xPercent: -65,
+      xPercent: -75,
       ease: "none",
       scrollTrigger: {
         trigger: targetRef.current,
@@ -88,7 +96,7 @@ export default function Projects() {
   return (
     <section id="projects" ref={targetRef} className="relative h-[300vh] border-t border-white/5 z-10 bg-transparent">
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden py-24">
-        
+
         {/* Header Section */}
         <div ref={headerRef} className="px-6 md:px-12 lg:px-24 max-w-7xl mx-auto w-full mb-12 opacity-0 translate-y-10">
           <p className="text-brand-400 font-mono text-sm tracking-[0.2em] uppercase mb-4">
@@ -112,13 +120,13 @@ export default function Projects() {
                     <span className="text-slate-500 font-mono text-xs tracking-widest">{project.id}</span>
                     <span className="text-slate-500 font-mono text-xs">{project.year}</span>
                   </div>
-                  
+
                   <h3 className="text-2xl font-display font-bold text-slate-200 mb-4 group-hover:text-brand-400 transition-colors">
                     <a href={project.live} target="_blank" rel="noreferrer" className="flex items-center gap-2">
                       {project.title}
                     </a>
                   </h3>
-                  
+
                   <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-8">
                     {project.description}
                   </p>
@@ -154,7 +162,7 @@ export default function Projects() {
                     </a>
                   </div>
                 </div>
-                
+
                 {/* Hover Gradient Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-500/0 to-brand-500/0 group-hover:from-brand-500/5 group-hover:to-transparent pointer-events-none transition-all duration-500" />
               </div>
