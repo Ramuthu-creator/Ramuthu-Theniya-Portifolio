@@ -82,13 +82,17 @@ export default function Projects() {
 
     // Use GSAP ScrollTrigger to scrub horizontal translate based on vertical scroll
     gsap.to(trackRef.current, {
-      xPercent: -75,
+      x: () => {
+        const offset = window.innerWidth > 1024 ? 96 : window.innerWidth > 768 ? 48 : 24;
+        return -(trackRef.current!.scrollWidth - window.innerWidth + offset);
+      },
       ease: "none",
       scrollTrigger: {
         trigger: targetRef.current,
         start: "top top",
         end: "bottom bottom",
         scrub: true,
+        invalidateOnRefresh: true,
       },
     });
   }, { scope: targetRef });
