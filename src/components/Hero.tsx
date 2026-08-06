@@ -66,26 +66,26 @@ export default function Hero() {
   return (
     <section id="home" className="min-h-screen flex items-center pt-20 pb-12 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto relative z-10">
       <div ref={containerRef} className="relative w-full">
-        <p className="hero-element opacity-0 text-brand-400 font-mono mb-4 md:mb-6 tracking-[0.2em] uppercase text-sm font-semibold flex items-center gap-3">
+        <p className="hero-element text-brand-400 font-mono mb-4 md:mb-6 tracking-[0.2em] uppercase text-sm font-semibold flex items-center gap-3">
           <span className="w-12 h-[2px] bg-brand-400 inline-block"></span>
           Hi, my name is
         </p>
         
-        <h1 className="hero-element opacity-0 text-5xl md:text-7xl lg:text-8xl font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-slate-100 via-slate-300 to-slate-500 mb-2 md:mb-4 tracking-tight pb-2">
+        <h1 className="hero-element text-5xl md:text-7xl lg:text-8xl font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-slate-100 via-slate-300 to-slate-500 mb-2 md:mb-4 tracking-tight pb-2">
           Ramuthu Theniya.
         </h1>
 
-        <h2 className="hero-element opacity-0 text-4xl md:text-6xl lg:text-7xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-purple-400 mb-8 md:mb-10 tracking-tight pb-2">
+        <h2 className="hero-element text-4xl md:text-6xl lg:text-7xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-purple-400 mb-8 md:mb-10 tracking-tight pb-2">
           I build digital experiences.
         </h2>
 
-        <p className="hero-element opacity-0 text-lg md:text-xl text-slate-400 max-w-2xl mb-12 leading-relaxed font-light">
+        <p className="hero-element text-lg md:text-xl text-slate-400 max-w-2xl mb-12 leading-relaxed font-light">
           Building digital experiences that combine{" "}
           <span className="text-slate-200 font-medium">beautiful design</span> with{" "}
           <span className="text-slate-200 font-medium">robust engineering</span>. Let's create something extraordinary together.
         </p>
 
-        <div className="hero-element opacity-0 flex flex-wrap gap-6 items-center">
+        <div className="hero-element flex flex-wrap gap-6 items-center">
           <a
             href="#projects"
             className="group relative px-8 py-4 bg-brand-500 text-white font-semibold rounded-full transition-all duration-300 hover:-translate-y-1 overflow-hidden"

@@ -13,7 +13,7 @@ export default function About() {
         {/* Left Column: Bio & Stats */}
         <div
           ref={leftColRef}
-          className="flex flex-col gap-8 opacity-0 translate-y-10"
+          className="flex flex-col gap-8"
         >
           <div>
             <p className="text-brand-400 font-mono text-sm tracking-[0.2em] uppercase mb-4">
@@ -53,7 +53,7 @@ export default function About() {
         {/* Right Column: Quick Info Card */}
         <div
           ref={rightColRef}
-          className="rounded-2xl border border-white/5 bg-white/[0.02] p-8 md:p-10 flex flex-col gap-8 backdrop-blur-sm opacity-0 translate-y-10"
+          className="rounded-2xl border border-white/5 bg-white/[0.02] p-8 md:p-10 flex flex-col gap-8 backdrop-blur-sm"
         >
           <div className="flex flex-col gap-3 border-b border-white/5 pb-8">
             <span className="text-[10px] text-slate-500 font-mono tracking-widest uppercase">EDUCATION</span>

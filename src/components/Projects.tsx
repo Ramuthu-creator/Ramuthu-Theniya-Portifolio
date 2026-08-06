@@ -102,7 +102,7 @@ export default function Projects() {
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden py-24">
 
         {/* Header Section */}
-        <div ref={headerRef} className="px-6 md:px-12 lg:px-24 max-w-7xl mx-auto w-full mb-12 opacity-0 translate-y-10">
+        <div ref={headerRef} className="px-6 md:px-12 lg:px-24 max-w-7xl mx-auto w-full mb-12">
           <p className="text-brand-400 font-mono text-sm tracking-[0.2em] uppercase mb-4">
             Deployments
           </p>

@@ -12,7 +12,7 @@ export default function Contact() {
         {/* Left Column: Info & Links */}
         <div
           ref={leftColRef}
-          className="opacity-0 translate-y-10"
+          className=""
         >
           <p className="text-brand-400 font-mono text-xs md:text-sm tracking-[0.2em] uppercase mb-4">
             Get In Touch
@@ -70,7 +70,7 @@ export default function Contact() {
         {/* Right Column: Contact Form */}
         <div
           ref={rightColRef}
-          className="opacity-0 translate-y-10"
+          className=""
         >
           <form 
             className="flex flex-col gap-8"

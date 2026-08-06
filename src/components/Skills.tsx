@@ -32,7 +32,7 @@ export default function Skills() {
 
   return (
     <section id="skills" className="py-24 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto border-t border-white/5 relative z-10">
-      <div ref={headerRef} className="mb-12 md:mb-20 opacity-0 translate-y-10">
+      <div ref={headerRef} className="mb-12 md:mb-20">
         <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-100 mb-4 flex items-center gap-4">
           <span className="w-8 md:w-16 h-px bg-brand-400 hidden sm:block"></span>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-100 to-slate-400">
@@ -51,7 +51,7 @@ export default function Skills() {
           return (
             <div
               key={category.title}
-              className="skill-card opacity-0 translate-y-10 glass-panel p-8 rounded-2xl hover:border-brand-500/50 hover:bg-white/[0.05] hover:-translate-y-2 transition-all duration-300 group shadow-xl"
+              className="skill-card glass-panel p-8 rounded-2xl hover:border-brand-500/50 hover:bg-white/[0.05] hover:-translate-y-2 transition-all duration-300 group shadow-xl"
             >
               <div className="flex items-center gap-3 mb-6 text-brand-400 group-hover:scale-110 origin-left transition-transform duration-300">
                 <Icon size={24} />
