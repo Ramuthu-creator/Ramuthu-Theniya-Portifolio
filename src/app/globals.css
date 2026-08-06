@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-outfit), system-ui, sans-serif;
+  
+  --color-dark-900: #0a0a0a;
+  --color-dark-800: #121212;
+  --color-dark-700: #1a1a1a;
+  
+  --color-brand-400: #38bdf8;
+  --color-brand-500: #0ea5e9;
+  --color-brand-600: #0284c7;
+
+  --animate-blob: blob 7s infinite;
+
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+}
+
+@layer utilities {
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+  
+  @keyframes gradient-border {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .animate-gradient-slow {
+    animation: gradient-border 6s ease infinite;
+  }
+  .animate-gradient-fast {
+    animation: gradient-border 2.5s ease infinite;
+  }
+
+  .glass-nav {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/10;
+  }
+  
+  .glass-panel {
+    @apply bg-white/[0.03] backdrop-blur-md border border-white/10;
+  }
+}
