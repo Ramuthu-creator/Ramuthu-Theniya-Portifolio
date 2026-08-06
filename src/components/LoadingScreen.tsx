@@ -1,12 +1,17 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isHydrated, setIsHydrated] = useState(false);
   
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
@@ -33,6 +38,12 @@ export default function LoadingScreen() {
         }
       });
 
+      tl.to(textRef.current, {
+        opacity: 1,
+        duration: 0.5,
+        ease: "power2.out",
+      }, 0);
+
       tl.to(counter, {
         value: 100,
         duration: 1.5,
@@ -58,16 +69,33 @@ export default function LoadingScreen() {
   if (!isLoading) return null;
 
   return (
-    <div
-      ref={containerRef}
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0a0a0a]"
-    >
-      <div className="flex flex-col items-center gap-6">
-        <div className="relative">
-          <span 
-            ref={textRef}
-            className="text-6xl md:text-8xl font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-purple-400"
-          >
+    <>
+      <noscript>
+        <style>{`#global-loading-screen { display: none !important; }`}</style>
+      </noscript>
+      <style suppressHydrationWarning>{`
+        .fallback-timeout {
+          animation: fallback-fade 0.5s ease 5s forwards;
+        }
+        @keyframes fallback-fade {
+          0% { opacity: 1; visibility: visible; }
+          100% { opacity: 0; visibility: hidden; pointer-events: none; }
+        }
+      `}</style>
+
+      <div
+        id="global-loading-screen"
+        ref={containerRef}
+        className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0a0a0a] ${
+          isHydrated ? "" : "fallback-timeout"
+        }`}
+      >
+        <div className="flex flex-col items-center gap-6">
+          <div className="relative">
+            <span 
+              ref={textRef}
+              className="opacity-0 text-6xl md:text-8xl font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-purple-400"
+            >
             0%
           </span>
         </div>
@@ -79,5 +107,6 @@ export default function LoadingScreen() {
         </div>
       </div>
     </div>
+    </>
   );
 }
