@@ -74,7 +74,8 @@ export default function Contact() {
         >
           <form 
             className="flex flex-col gap-8"
-            onSubmit={(e) => e.preventDefault()}
+            action="https://formspree.io/f/xkjwgozp"
+            method="POST"
           >
             <div className="flex flex-col gap-3">
               <label htmlFor="name" className="text-slate-500 font-mono text-[10px] uppercase tracking-widest">
@@ -83,6 +84,7 @@ export default function Contact() {
               <input
                 type="text"
                 id="name"
+                name="name"
                 placeholder="John Doe"
                 className="bg-transparent border border-white/10 p-4 text-slate-200 text-sm placeholder:text-slate-700 focus:outline-none focus:border-brand-400 transition-colors w-full"
                 required
@@ -96,6 +98,7 @@ export default function Contact() {
               <input
                 type="email"
                 id="email"
+                name="email"
                 placeholder="john@example.com"
                 className="bg-transparent border border-white/10 p-4 text-slate-200 text-sm placeholder:text-slate-700 focus:outline-none focus:border-brand-400 transition-colors w-full"
                 required
@@ -108,6 +111,7 @@ export default function Contact() {
               </label>
               <textarea
                 id="message"
+                name="message"
                 placeholder="Tell me about your project or just say hi..."
                 rows={5}
                 className="bg-transparent border border-white/10 p-4 text-slate-200 text-sm placeholder:text-slate-700 focus:outline-none focus:border-brand-400 transition-colors resize-none w-full"
