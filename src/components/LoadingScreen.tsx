@@ -5,7 +5,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 export default function LoadingScreen() {
-  const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   
   const containerRef = useRef<HTMLDivElement>(null);
@@ -39,7 +38,9 @@ export default function LoadingScreen() {
         duration: 1.5,
         ease: "power2.inOut",
         onUpdate: () => {
-          setProgress(Math.round(counter.value));
+          if (textRef.current) {
+            textRef.current.innerText = `${Math.round(counter.value)}%`;
+          }
         }
       }, 0);
 
@@ -67,7 +68,7 @@ export default function LoadingScreen() {
             ref={textRef}
             className="text-6xl md:text-8xl font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-purple-400"
           >
-            {progress}%
+            0%
           </span>
         </div>
         <div className="w-48 h-1 bg-white/10 rounded-full overflow-hidden">
