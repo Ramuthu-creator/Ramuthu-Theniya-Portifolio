@@ -1,6 +1,7 @@
 "use client";
 
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import AboutPhoto from "./AboutPhoto";
 
 export default function About() {
   const leftColRef = useScrollReveal();
@@ -50,18 +51,28 @@ export default function About() {
           </div>
         </div>
 
-        {/* Right Column: Quick Info Card */}
-        <div
-          ref={rightColRef}
-          className="rounded-2xl border border-white/5 bg-white/[0.02] p-8 md:p-10 flex flex-col gap-8 backdrop-blur-sm"
-        >
-          <div className="flex flex-col gap-3 border-b border-white/5 pb-8">
+        {/* Right Column: Photo */}
+        <div className="flex items-start justify-center lg:pt-8">
+          <AboutPhoto />
+        </div>
+
+      </div>
+
+      {/* Quick Info Section (Separated) */}
+      <div
+        ref={rightColRef}
+        className="mt-20 md:mt-32 rounded-2xl border border-white/5 bg-white/[0.02] p-8 md:p-12 backdrop-blur-sm"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 divide-y md:divide-y-0 lg:divide-x divide-white/5">
+          {/* Education */}
+          <div className="flex flex-col gap-3 lg:px-8 first:lg:pl-0 pt-8 md:pt-0 first:pt-0">
             <span className="text-[10px] text-slate-500 font-mono tracking-widest uppercase">EDUCATION</span>
             <h3 className="text-slate-200 font-medium text-lg">Bachelor (Hons.) in Software Engineering</h3>
             <p className="text-sm text-slate-400 font-light">Cinec Campus, Sri Lanka</p>
           </div>
 
-          <div className="flex flex-col gap-3 border-b border-white/5 pb-8">
+          {/* Location */}
+          <div className="flex flex-col gap-3 lg:px-8 pt-8 md:pt-0">
             <span className="text-[10px] text-slate-500 font-mono tracking-widest uppercase">LOCATION</span>
             <h3 className="text-slate-200 font-medium text-lg flex items-center gap-2">
               Sri Lanka 🇱🇰
@@ -69,13 +80,15 @@ export default function About() {
             <p className="text-sm text-slate-400 font-light">Open to remote globally</p>
           </div>
 
-          <div className="flex flex-col gap-3 border-b border-white/5 pb-8">
+          {/* Started */}
+          <div className="flex flex-col gap-3 lg:px-8 pt-8 md:pt-12 lg:pt-0">
             <span className="text-[10px] text-slate-500 font-mono tracking-widest uppercase">STARTED</span>
             <h3 className="text-slate-200 font-medium text-lg">2021</h3>
             <p className="text-sm text-slate-400 font-light">Building side projects and learning</p>
           </div>
 
-          <div className="flex flex-col gap-3">
+          {/* Fun Fact */}
+          <div className="flex flex-col gap-3 lg:px-8 pt-8 md:pt-12 lg:pt-0">
             <span className="text-[10px] text-brand-400 font-mono tracking-widest uppercase flex items-center gap-2">
               <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
               FUN FACT
@@ -85,7 +98,6 @@ export default function About() {
             </p>
           </div>
         </div>
-
       </div>
     </section>
   );
