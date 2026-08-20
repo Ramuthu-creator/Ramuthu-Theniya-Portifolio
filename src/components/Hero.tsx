@@ -64,8 +64,8 @@ export default function Hero() {
   );
 
   return (
-    <section id="home" className="min-h-screen flex items-center pt-20 pb-12 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto relative z-10">
-      <div ref={containerRef} className="relative w-full">
+    <section id="home" className="min-h-screen flex items-center pt-20 pb-12 px-6 md:px-8 lg:px-12 xl:px-16 max-w-[90rem] mx-auto relative z-[70]">
+      <div ref={containerRef} className="relative w-full md:w-3/4 lg:w-2/3">
         <p className="hero-element text-brand-400 font-mono mb-4 md:mb-6 tracking-[0.2em] uppercase text-sm font-semibold flex items-center gap-3">
           <span className="w-12 h-[2px] bg-brand-400 inline-block"></span>
           Hi, my name is

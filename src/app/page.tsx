@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import ScrollPortraitVideo from "@/components/ScrollPortraitVideo";
 
 // Dynamically import below-the-fold components to reduce initial JS payload
 const About = dynamic(() => import("@/components/About"));
@@ -25,6 +26,7 @@ export default function Home() {
       <Navbar />
 
       <main className="flex-grow">
+        <ScrollPortraitVideo />
         <Hero />
         <About />
         <Skills />

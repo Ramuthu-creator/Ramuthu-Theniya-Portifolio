@@ -1,14 +1,13 @@
 "use client";
 
 import { useScrollReveal } from "../hooks/useScrollReveal";
-import AboutPhoto from "./AboutPhoto";
 
 export default function About() {
   const leftColRef = useScrollReveal();
   const rightColRef = useScrollReveal({ delay: 0.2 });
 
   return (
-    <section id="about" className="py-32 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto border-t border-white/5 relative z-10">
+    <section id="about" className="py-32 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto border-t border-white/5 relative z-[70]">
       <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
         {/* Left Column: Bio & Stats */}
@@ -51,9 +50,8 @@ export default function About() {
           </div>
         </div>
 
-        {/* Right Column: Photo */}
+        {/* Right Column: Photo (Now handled by the video background) */}
         <div className="flex items-start justify-center lg:pt-8">
-          <AboutPhoto />
         </div>
 
       </div>

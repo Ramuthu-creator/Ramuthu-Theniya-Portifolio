@@ -6,6 +6,7 @@ import { FaGithub } from "react-icons/fa";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import Starfield from "./Starfield";
 
 const projects = [
   {
@@ -100,9 +101,10 @@ export default function Projects() {
   return (
     <section id="projects" ref={targetRef} className="relative h-[300vh] border-t border-white/5 z-10 bg-transparent">
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden py-24">
+        <Starfield />
 
         {/* Header Section */}
-        <div ref={headerRef} className="px-6 md:px-12 lg:px-24 max-w-7xl mx-auto w-full mb-12">
+        <div ref={headerRef} className="px-6 md:px-12 lg:px-24 max-w-7xl mx-auto w-full mb-12 relative z-10">
           <p className="text-brand-400 font-mono text-sm tracking-[0.2em] uppercase mb-4">
             Deployments
           </p>
@@ -112,7 +114,7 @@ export default function Projects() {
         </div>
 
         {/* Horizontal Scroll Track */}
-        <div className="pl-6 md:pl-12 lg:pl-24">
+        <div className="pl-6 md:pl-12 lg:pl-24 relative z-10">
           <div ref={trackRef} className="flex gap-0 border-t border-l border-white/10 w-fit">
             {projects.map((project, index) => (
               <div
