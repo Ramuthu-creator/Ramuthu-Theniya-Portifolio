@@ -185,9 +185,11 @@ export default function Contact() {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="h-full w-full"
+            className="h-full w-full hidden lg:block"
           >
-            <ContactModel />
+            {typeof window !== "undefined" && window.innerWidth >= 1024 && (
+              <ContactModel />
+            )}
           </motion.div>
 
         </div>

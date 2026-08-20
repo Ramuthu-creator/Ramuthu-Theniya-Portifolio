@@ -125,8 +125,8 @@ export default function ScrollPortraitVideo() {
       ref={containerRef} 
       className="fixed inset-0 pointer-events-none z-[60] bg-[#0a0a0a]"
       style={{
-        opacity: isVideoLoaded ? 1 : 0,
-        visibility: isVideoLoaded ? "visible" : "hidden",
+        opacity: isVideoLoaded && !isMobile && !prefersReducedMotion ? 1 : 0,
+        visibility: isVideoLoaded && !isMobile && !prefersReducedMotion ? "visible" : "hidden",
         pointerEvents: "none",
         transform: "translateZ(0)",
         backfaceVisibility: "hidden",

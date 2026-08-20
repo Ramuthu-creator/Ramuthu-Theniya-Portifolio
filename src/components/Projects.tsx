@@ -81,26 +81,34 @@ export default function Projects() {
   useGSAP(() => {
     if (!targetRef.current || !trackRef.current) return;
 
-    // Use GSAP ScrollTrigger to scrub horizontal translate based on vertical scroll
-    gsap.to(trackRef.current, {
-      x: () => {
-        const offset = window.innerWidth > 1024 ? 96 : window.innerWidth > 768 ? 48 : 24;
-        return -(trackRef.current!.scrollWidth - window.innerWidth + offset);
-      },
-      ease: "none",
-      scrollTrigger: {
-        trigger: targetRef.current,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: true,
-        invalidateOnRefresh: true,
-      },
+    const media = gsap.matchMedia();
+
+    // The horizontal track is a desktop interaction. On phones its transformed
+    // width can enlarge Safari's page canvas and make the whole site pan sideways.
+    media.add("(min-width: 769px)", () => {
+      gsap.to(trackRef.current, {
+        x: () => {
+          if (!trackRef.current) return 0;
+          const offset = window.innerWidth > 1024 ? 96 : 48;
+          return -(trackRef.current.scrollWidth - window.innerWidth + offset);
+        },
+        ease: "none",
+        scrollTrigger: {
+          trigger: targetRef.current,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      });
     });
+
+    return () => media.revert();
   }, { scope: targetRef });
 
   return (
-    <section id="projects" ref={targetRef} className="relative h-[300vh] border-t border-white/5 z-10 bg-transparent">
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden py-24">
+    <section id="projects" ref={targetRef} className="relative h-auto md:h-[300vh] border-t border-white/5 z-10 bg-transparent overflow-x-clip">
+      <div className="relative md:sticky md:top-0 h-auto md:h-screen flex flex-col justify-center overflow-hidden py-24">
         <Starfield />
 
         {/* Header Section */}
@@ -114,12 +122,12 @@ export default function Projects() {
         </div>
 
         {/* Horizontal Scroll Track */}
-        <div className="pl-6 md:pl-12 lg:pl-24 relative z-10">
-          <div ref={trackRef} className="flex gap-0 border-t border-l border-white/10 w-fit">
-            {projects.map((project, index) => (
+        <div className="px-6 md:pl-12 md:pr-0 lg:pl-24 relative z-10">
+          <div ref={trackRef} className="flex flex-col md:flex-row gap-6 md:gap-0 md:border-t md:border-l border-white/10 w-full md:w-fit">
+            {projects.map((project) => (
               <div
                 key={project.id}
-                className="group relative flex-none w-[85vw] md:w-[500px] border-r border-b border-white/10 p-8 flex flex-col justify-between hover:bg-white/[0.02] transition-colors duration-500 min-h-[400px]"
+                className="group relative flex-none w-full md:w-[500px] border border-white/10 md:border-l-0 md:border-t-0 p-6 md:p-8 flex flex-col justify-between hover:bg-white/[0.02] transition-colors duration-500 min-h-[360px] md:min-h-[400px]"
               >
                 <div>
                   <div className="flex justify-between items-center mb-8">
@@ -147,7 +155,7 @@ export default function Projects() {
                     ))}
                   </div>
 
-                  <div className="flex gap-4 text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="flex gap-4 text-slate-500 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                     <a
                       href={project.github}
                       target="_blank"
