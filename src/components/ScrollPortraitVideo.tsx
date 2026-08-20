@@ -7,30 +7,25 @@ export default function ScrollPortraitVideo() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
 
   // Cached positions
   const boundsRef = useRef({ startScroll: 0, endScroll: 1, scrollRange: 1 });
 
   useEffect(() => {
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const mobileQuery = window.matchMedia("(max-width: 768px)");
-    
+
     // Avoid synchronous setState in effect to satisfy lint rules
-    setTimeout(() => {
+    const initialCheck = requestAnimationFrame(() => {
       setPrefersReducedMotion(motionQuery.matches);
-      setIsMobile(mobileQuery.matches);
-    }, 0);
+    });
 
     const updateMotion = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
-    const updateMobile = (e: MediaQueryListEvent) => setIsMobile(e.matches);
 
     motionQuery.addEventListener("change", updateMotion);
-    mobileQuery.addEventListener("change", updateMobile);
 
     return () => {
+      cancelAnimationFrame(initialCheck);
       motionQuery.removeEventListener("change", updateMotion);
-      mobileQuery.removeEventListener("change", updateMobile);
     };
   }, []);
 
@@ -47,7 +42,7 @@ export default function ScrollPortraitVideo() {
   };
 
   useEffect(() => {
-    if (prefersReducedMotion || isMobile) {
+    if (prefersReducedMotion) {
       // Dispatch event to show fallback
       window.dispatchEvent(new CustomEvent("video-portrait-status", { detail: { active: false } }));
       return;
@@ -109,7 +104,7 @@ export default function ScrollPortraitVideo() {
       window.removeEventListener("orientationchange", calculateBounds);
       cancelAnimationFrame(rafId);
     };
-  }, [prefersReducedMotion, isMobile, isVideoLoaded]);
+  }, [prefersReducedMotion, isVideoLoaded]);
 
   const handleVideoLoad = () => {
     setIsVideoLoaded(true);
@@ -125,8 +120,8 @@ export default function ScrollPortraitVideo() {
       ref={containerRef} 
       className="fixed inset-0 pointer-events-none z-[60] bg-[#0a0a0a]"
       style={{
-        opacity: isVideoLoaded && !isMobile && !prefersReducedMotion ? 1 : 0,
-        visibility: isVideoLoaded && !isMobile && !prefersReducedMotion ? "visible" : "hidden",
+        opacity: isVideoLoaded && !prefersReducedMotion ? 1 : 0,
+        visibility: isVideoLoaded && !prefersReducedMotion ? "visible" : "hidden",
         pointerEvents: "none",
         transform: "translateZ(0)",
         backfaceVisibility: "hidden",

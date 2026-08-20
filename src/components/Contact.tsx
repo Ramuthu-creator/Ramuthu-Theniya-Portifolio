@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Send, Loader2, CheckCircle, AlertCircle } from "lucide-react";
 import ContactModel from "./ContactModel";
@@ -50,10 +50,14 @@ export default function Contact() {
       setTimeout(() => {
         setStatus("idle");
       }, 5000);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Submission error:", error);
       setStatus("error");
-      setErrorMessage(error?.text || "Something went wrong. Please try again.");
+      const message =
+        typeof error === "object" && error !== null && "text" in error && typeof error.text === "string"
+          ? error.text
+          : "Something went wrong. Please try again.";
+      setErrorMessage(message);
     }
   };
 
@@ -185,11 +189,9 @@ export default function Contact() {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="h-full w-full hidden lg:block"
+            className="h-[360px] sm:h-[440px] lg:h-full w-full"
           >
-            {typeof window !== "undefined" && window.innerWidth >= 1024 && (
-              <ContactModel />
-            )}
+            <ContactModel />
           </motion.div>
 
         </div>

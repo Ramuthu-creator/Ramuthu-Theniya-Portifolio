@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -8,11 +8,9 @@ export default function AboutPhotoCard() {
   const cardRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
-
-  useEffect(() => {
-    setIsTouchDevice(window.matchMedia("(hover: none) and (pointer: coarse)").matches);
-  }, []);
+  const [isTouchDevice] = useState(() =>
+    typeof window !== "undefined" && window.matchMedia("(hover: none) and (pointer: coarse)").matches
+  );
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (isTouchDevice || !cardRef.current) return;

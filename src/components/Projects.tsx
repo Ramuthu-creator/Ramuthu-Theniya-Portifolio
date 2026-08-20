@@ -16,7 +16,6 @@ const projects = [
     description: "Car rental system with real-time availability and booking management, built using HTML, CSS, JavaScript, and MySQL.",
     tech: ["HTML", "CSS", "JAVASCRIPT", "MYSQL"],
     github: "https://github.com/Ramuthu-creator/rentxpress",
-    live: "https://github.com/Ramuthu-creator/rentxpress",
   },
   {
     id: "PROJ_ID: TECHCARE",
@@ -24,8 +23,6 @@ const projects = [
     title: "Tech Care",
     description: "A web application for managing and resolving IT support tickets, providing a centralized platform for users to submit requests and track their resolution.",
     tech: ["REACT", "TAILWIND", "JAVASCRIPT", "FIREBASE"],
-    github: "https://github.com/Ramuthu-creator/tech-care",
-    live: "https://github.com/Ramuthu-creator/tech-care",
   },
   {
     id: "PROJ_ID: NEIGHBOURKNOT",
@@ -34,7 +31,7 @@ const projects = [
     description: "A cross-platform mobile app for sharing skills through a token-based system, where users earn tokens by teaching others and use them to learn new skills from the community.",
     tech: ["HTML", "CSS", "FIREBASE", "JAVASCRIPT"],
     github: "https://github.com/Ramuthu-creator/neighbourknot",
-    live: "https://github.com/Ramuthu-creator/neighbourknot",
+    live: "https://neighbourknot.web.app/",
   },
   {
     id: "PROJ_ID: FIN-PLAN",
@@ -51,7 +48,7 @@ const projects = [
     title: "Hand Landmark Model",
     description: "A computer vision application that detects and visualizes hand landmarks using Google's MediaPipe framework. Features real-time tracking, animated rainbow connections, and multi-hand detection.",
     tech: ["PYTHON", "OPENCV", "MEDIAPIPE", "NUMPY"],
-    github: "#",
+    github: "https://github.com/Ramuthu-creator/Hand-Land-Mark-Model",
     live: "#",
   },
   {
@@ -60,16 +57,15 @@ const projects = [
     title: "FloodGuardLK",
     description: "An IoT-driven flood early warning system for Sri Lanka. Features multi-sensor fusion, edge computing for offline resilience, Azure IoT Hub analytics, and a multilingual citizen mobile app for real-time alerts.",
     tech: ["IOT", "AZURE", "LORAWAN", "MQTT", "RASPBERRY PI"],
-    github: "#",
-    live: "#",
   },
   {
     id: "PROJ_ID: ProjectBridge",
-    year: "ONGOING",
+    year: "2026",
     title: "ProjectBridge",
     description: "A decentralized full-stack ecosystem designed to translate undergraduate IT research into commercial ventures. It securely connects students with tech investors using SHA-256 hashing for intellectual property protection.",
     tech: ["MONGODB", "EXPRESS.JS", "REACT", "NODE.JS"],
-    github: "#",
+    github: "https://github.com/Ramuthu-creator/ProjectBridge",
+    live: "https://project-bridge-puce.vercel.app/",
   },
 ];
 
@@ -136,9 +132,13 @@ export default function Projects() {
                   </div>
 
                   <h3 className="text-2xl font-display font-bold text-slate-200 mb-4 group-hover:text-brand-400 transition-colors">
-                    <a href={project.live} target="_blank" rel="noreferrer" className="flex items-center gap-2">
-                      {project.title}
-                    </a>
+                    {project.live && project.live !== "#" ? (
+                      <a href={project.live} target="_blank" rel="noreferrer" className="flex items-center gap-2">
+                        {project.title}
+                      </a>
+                    ) : (
+                      <span className="flex items-center gap-2">{project.title}</span>
+                    )}
                   </h3>
 
                   <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-8">
@@ -156,24 +156,28 @@ export default function Projects() {
                   </div>
 
                   <div className="flex gap-4 text-slate-500 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="hover:text-brand-400 transition-colors"
-                      aria-label="GitHub Link"
-                    >
-                      <FaGithub size={18} />
-                    </a>
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="hover:text-brand-400 transition-colors"
-                      aria-label="External Link"
-                    >
-                      <ExternalLink size={18} />
-                    </a>
+                    {project.github && project.github !== "#" && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="hover:text-brand-400 transition-colors"
+                        aria-label="GitHub Link"
+                      >
+                        <FaGithub size={18} />
+                      </a>
+                    )}
+                    {project.live && project.live !== "#" && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="hover:text-brand-400 transition-colors"
+                        aria-label="External Link"
+                      >
+                        <ExternalLink size={18} />
+                      </a>
+                    )}
                   </div>
                 </div>
 

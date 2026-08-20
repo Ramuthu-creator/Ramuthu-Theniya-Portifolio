@@ -50,9 +50,8 @@ export default function About() {
           </div>
         </div>
 
-        {/* Right Column: Photo (Now handled by the video background) */}
-        <div className="flex items-start justify-center lg:pt-8">
-        </div>
+        {/* The fixed scroll-controlled portrait video fills this visual column. */}
+        <div className="flex items-start justify-center lg:pt-8" />
 
       </div>
 

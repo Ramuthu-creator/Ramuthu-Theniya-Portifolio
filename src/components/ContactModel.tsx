@@ -15,8 +15,8 @@ function Model() {
 
 export default function ContactModel() {
   return (
-    <div className="w-full h-full min-h-[500px] lg:min-h-[600px] relative">
-      <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+    <div className="w-full h-full min-h-[360px] sm:min-h-[440px] lg:min-h-[600px] relative touch-pan-y">
+      <Canvas dpr={[1, 1.5]} camera={{ position: [0, 0, 5], fov: 45 }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1} color="#c084fc" />
         <directionalLight position={[-10, -10, -5]} intensity={0.5} color="#818cf8" />
